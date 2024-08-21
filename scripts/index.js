@@ -77,16 +77,15 @@ function memberCall(pfpSrc, textContent, user) {
         current_page = "member";
         document.title = "real; " + user;
         const displayText = document.querySelector(".display-text");
-        const randomGif = document.getElementById("random-gif");
         const pfpImage = document.getElementById("pfp-image");
 
         pfpImage.style.display = "block";
         pfpImage.style.opacity = 1;
-        randomGif.style.position = "absolute";
+
 
         displayText.innerHTML = textContent;
         pfpImage.src = pfpSrc;
-        randomGif.style.display = "none";
+
 
         transitionActive = false;
     }
@@ -123,7 +122,7 @@ function memberCall(pfpSrc, textContent, user) {
         current_page = "member";
         document.title = "" + user;
         const displayText = document.querySelector(".display-text");
-        const randomGif = document.getElementById("random-gif");
+
         const pfpImage = document.getElementById("pfp-image");
 
         pfpImage.style.display = "block";
@@ -131,7 +130,7 @@ function memberCall(pfpSrc, textContent, user) {
 
         displayText.innerHTML = textContent;
         pfpImage.src = pfpSrc;
-        randomGif.style.display = "none";
+
 
         transitionActive = false;
     }
@@ -145,12 +144,12 @@ function updatePage(htmlContent, pageTitle) {
 
     if (current_page !== "main") {
         current_page = "main";
-        const randomGif = document.getElementById("random-gif");
+
         const pfpImage = document.getElementById("pfp-image");
 
         pfpImage.style.opacity = 0;
-        randomGif.style.display = "block";
-        randomGif.style.opacity = 1;
+
+
         displayText.innerHTML = htmlContent;
         pfpImage.style.display = "none";
         displayText.style.opacity = 1;
@@ -190,31 +189,5 @@ function getRandomSentence() {
     ];
     const randomIndex = Math.floor(Math.random() * sentences.length);
     return sentences[randomIndex];
-}
-
-var gifs = [
-    "cute-pokemon.gif",
-    "sprite-pokemon.gif",
-    ];
-
-function setRandomGif() {
-    var randomIndex = Math.floor(Math.random() * gifs.length);
-    var randomGif = gifs[randomIndex];
-    document.getElementById("random-gif").src = "assets/" + randomGif;
-
-    document.body.setAttribute("data-current-gif", randomGif);
-
-    updateButtonHoverColor();
-}
-
-setRandomGif();
-
-function updateButtonHoverColor() {
-    var currentGif = document.body.getAttribute("data-current-gif");
-    var buttons = document.querySelectorAll(".buttons-container button");
-
-    buttons.forEach(function(button) {
-        button.setAttribute("data-gif", currentGif);
-    });
 }
 
